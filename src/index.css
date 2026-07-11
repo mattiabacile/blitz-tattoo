@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-red: #DC2626;
+    --color-red-deep: #B91C1C;
+    --color-red-bright: #EF4444;
+    --color-black: #0A0A0A;
+    --color-black-soft: #141414;
+    --color-offwhite: #F5F0EB;
+    --color-white: #FAFAFA;
+    --color-gray-warm: #E8E0D8;
+    --color-text-muted: #6B6560;
+    --color-text-muted-dark: #8A8580;
+
+    --text-hero: clamp(6rem, 18vw, 22rem);
+    --text-h1: clamp(4rem, 10vw, 12rem);
+    --text-h2: clamp(2.5rem, 5vw, 6rem);
+    --text-h3: clamp(1.5rem, 3vw, 3.5rem);
+    --text-body-lg: 1.25rem;
+    --text-body: 1rem;
+    --text-body-sm: 0.875rem;
+    --text-label: 0.75rem;
+    --text-nav: 0.875rem;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 6rem;
+    --space-2xl: 8rem;
+    --space-3xl: 12rem;
+    --container-max: 1440px;
+    --container-narrow: 960px;
+
+    --background: 30 18% 95%;
+    --foreground: 0 0% 4%;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-offwhite);
+    color: var(--color-black);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ============ KEYFRAMES ============ */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+@keyframes scrollDown {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(8px); opacity: 0; }
+}
+
+/* ============ BLINDS TEXT REVEAL ============ */
+
+.blinds-text {
+  line-height: 0.95;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.35em;
+}
+
+.blinds-text .word {
+  display: inline-flex;
+  position: relative;
+}
+
+.blinds-text .word__inner {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.blinds-text .word__red {
+  display: inline-block;
+  color: #DC2626;
+  opacity: 1;
+}
+
+.blinds-text .word__blind {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.blinds-text .word__blind--top,
+.blinds-text .word__blind--bottom {
+  position: absolute;
+  height: 50.5%;
+  width: 100%;
+  left: 0;
+  overflow: hidden;
+  background: #F5F0EB;
+  transform: scaleX(1);
+}
+
+.blinds-text .word__blind--top {
+  top: 0;
+  transform-origin: 100% 0;
+}
+
+.blinds-text .word__blind--bottom {
+  bottom: 0;
+  transform-origin: 0 100%;
+}
+
+.blinds-text.is-animated .word__red {
+  opacity: 0;
+  transition: opacity 1.2s ease-in;
+}
+
+.blinds-text.is-animated .word__blind--top {
+  transform: scaleX(0);
+  transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.blinds-text.is-animated .word__blind--bottom {
+  transform: scaleX(0);
+  transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+  transition-delay: 0.2s;
+}
+
+/* ============ FALLING TEXT ============ */
+
+.falling-text .char {
+  display: inline-block;
+  will-change: transform;
+}
+
+.falling-text .whitespace {
+  display: inline-block;
+  width: 0.25em;
+}
+
+/* ============ SERVICES SCROLL BLUR ============ */
+
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 800px;
+}
+
+.services-list li {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 4vw, 4rem);
+  color: #FAFAFA;
+  text-align: center;
+  padding: 0.4em 0;
+  transition: color 0.15s ease;
+  will-change: filter, opacity;
+  backface-visibility: hidden;
+}
+
+.services-list:not(.is-ready) li {
+  opacity: 0;
+}
+
+.services-list.is-ready li {
+  opacity: 1;
+}
+
+/* ============ SCROLLBAR ============ */
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-black);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-red);
+    border-radius: 3px;
+  }
+}
