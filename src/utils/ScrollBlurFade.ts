@@ -4,17 +4,19 @@ export class ScrollBlurFade {
   numItems: number;
   winH: number;
   private scrollInterval: ReturnType<typeof setInterval> | null = null;
+  private readonly handleResize: () => void;
 
   constructor(listElement: HTMLElement) {
     this.list = listElement;
     this.items = this.list.querySelectorAll("li");
     this.numItems = this.items.length;
     this.winH = window.innerHeight;
+    this.handleResize = () => {
+      this.winH = window.innerHeight;
+    };
     this._init();
 
-    window.addEventListener("resize", () => {
-      this.winH = window.innerHeight;
-    });
+    window.addEventListener("resize", this.handleResize);
   }
 
   private _init() {
@@ -23,6 +25,7 @@ export class ScrollBlurFade {
   }
 
   private _start() {
+    if (this.scrollInterval) return;
     this.scrollInterval = setInterval(() => this._scrollCallback(), 20);
   }
 
@@ -38,7 +41,7 @@ export class ScrollBlurFade {
   }
 
   private _getCenter() {
-    return this.winH / 2 + window.scrollY;
+    return this.winH / 2;
   }
 
   private _scrollCallback() {
@@ -46,7 +49,8 @@ export class ScrollBlurFade {
     const maxDistance = this.winH / 1.5;
 
     this.items.forEach((item) => {
-      const elCenter = item.offsetTop + item.offsetHeight / 2;
+      const rect = item.getBoundingClientRect();
+      const elCenter = rect.top + rect.height / 2;
       const distance = Math.abs(center - elCenter);
       const normalized = Math.min(distance / maxDistance, 1);
 
@@ -70,5 +74,6 @@ export class ScrollBlurFade {
 
   destroy() {
     this._stop();
+    window.removeEventListener("resize", this.handleResize);
   }
 }

@@ -14,7 +14,6 @@ export default function About() {
     const heading = headingRef.current;
     if (!heading) return;
 
-    // Give the heading a brief moment to mount, then init BlindsTextReveal
     const timer = setTimeout(() => {
       const reveal = new BlindsTextReveal(heading, { bgColor: "#F5F0EB" });
       const words = reveal.getWords();
@@ -58,82 +57,59 @@ export default function About() {
   }, []);
 
   return (
-    <section
-      id="about"
-      ref={sectionRef}
-      style={{
-        backgroundColor: "var(--color-offwhite)",
-        padding: "var(--space-3xl) var(--space-lg)",
-        position: "relative",
-      }}
-    >
-      {/* Section label */}
-      <span
-        className="absolute font-medium uppercase"
-        style={{
-          top: "var(--space-lg)",
-          left: "var(--space-lg)",
-          fontSize: "var(--text-label)",
-          color: "var(--color-text-muted)",
-          letterSpacing: "0.12em",
-        }}
-      >
-        ABOUT
-      </span>
+    <section id="about" ref={sectionRef} className="about-section relative">
+      <div className="about-inner mx-auto">
+        <div className="about-intro grid grid-cols-1 items-start md:grid-cols-5">
+          <div className="md:col-span-3">
+            <span className="about-kicker">La nostra storia</span>
+            <h2
+              ref={headingRef}
+              className="about-heading blinds-text js-blinds-text font-['Bebas_Neue'] uppercase"
+            >
+              <span>MODENA, 2015. </span>
+              <span style={{ color: "#DC2626" }}>UNA SOLA IDEA: </span>
+              <span>FARE OGNI LAVORO COME SE DOVESSE </span>
+              <span style={{ color: "#DC2626" }}>RESTARE PER SEMPRE.</span>
+            </h2>
+          </div>
 
-      <div
-        className="mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-start"
-        style={{ maxWidth: "var(--container-max)" }}
-      >
-        {/* Decorative red dot */}
-        <div
-          className="hidden md:block absolute"
-          style={{
-            width: "8px",
-            height: "8px",
-            borderRadius: "50%",
-            backgroundColor: "var(--color-red)",
-            left: "var(--space-lg)",
-            top: "calc(var(--space-3xl) + 80px)",
-          }}
-        />
-
-        {/* Text column */}
-        <div className="md:col-span-3">
-          <h1
-            ref={headingRef}
-            className="about-heading blinds-text js-blinds-text font-['Bebas_Neue'] uppercase"
-            style={{
-              fontSize: "var(--text-h1)",
-              color: "var(--color-black)",
-              lineHeight: 0.95,
-              letterSpacing: "-0.02em",
-              paddingLeft: "24px",
-            }}
-          >
-            <span>AT BLITZ TATTOO, </span>
-            <span style={{ color: "#DC2626" }}>WE DON&apos;T JUST CREATE TATTOOS, </span>
-            <span>WE CRAFT MEANINGFUL, TIMELESS ART THAT TELLS YOUR STORY. WHETHER YOU&apos;RE LOOKING FOR BOLD, TRADITIONAL INK OR DELICATE, INTRICATE DESIGNS, OUR ARTISTS BRING THEIR UNIQUE EXPERTISE TO MAKE </span>
-            <span style={{ color: "#DC2626" }}>YOUR VISION A REALITY.</span>
-          </h1>
+          <div className="about-story md:col-span-2">
+            <p>
+              Blitz nasce a Modena nel 2015 come studio indipendente, con una
+              convinzione semplice: prima dell&apos;inchiostro viene l&apos;ascolto.
+              Ogni progetto parte dalla persona, dal motivo che porta con sé e
+              dal modo in cui quel segno dovrà vivere sulla pelle.
+            </p>
+            <p>
+              Negli anni lo spazio è cresciuto insieme alle persone che lo
+              abitano. Oggi riunisce mani e stili diversi, ma conserva lo stesso
+              metodo: consulenza chiara, disegno su misura, igiene rigorosa e
+              nessuna fretta di arrivare alla macchinetta.
+            </p>
+            <p className="about-story__note">
+              Tatuaggi custom, piercing e consulenze su appuntamento.
+            </p>
+          </div>
         </div>
 
-        {/* Image column */}
-        <div
-          ref={imageRef}
-          className="md:col-span-2"
-          style={{ marginTop: "-4rem" }}
-        >
-          <img
-            src="/about-artist.jpg"
-            alt="Tattoo artist at work"
-            className="w-full object-cover"
-            style={{
-              borderRadius: "8px",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
-              aspectRatio: "3/4",
-            }}
-          />
+        <div ref={imageRef} className="about-media grid grid-cols-1 md:grid-cols-5">
+          <figure className="about-media__main md:col-span-3">
+            <img
+              src="/studio-esterno.jpg"
+              alt="La facciata di Blitz Tattoo a Modena, illuminata la sera"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Blitz Tattoo, Modena</figcaption>
+          </figure>
+          <figure className="about-media__secondary md:col-span-2">
+            <img
+              src="/studio-lounge.jpg"
+              alt="La zona d'attesa di Blitz Tattoo con flash tradizionali alle pareti"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
         </div>
       </div>
     </section>

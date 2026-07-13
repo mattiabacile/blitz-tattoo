@@ -8,20 +8,20 @@ const promotions = [
   {
     title: "WALK IN DAY",
     description:
-      "Every Wednesday, walk-ins get 15% off any same-day appointment. No booking required \u2014 just show up and get inked.",
-    cta: "Find us on the map",
+      "Ogni mercoledì accogliamo walk-in con il 15% di sconto sui tatuaggi realizzati in giornata. Nessuna prenotazione: passi, scegli, parti.",
+    cta: "Trova lo studio",
   },
   {
-    title: "CLUB CARD",
+    title: "TESSERA BLITZ",
     description:
-      "Your 5th tattoo is 50% off. Collect stamps with every session and watch the savings stack up.",
-    cta: "Ask at the studio",
+      "Al quinto tatuaggio hai il 50% di sconto. Raccogli un timbro a ogni sessione e porta avanti la tua storia con noi.",
+    cta: "Chiedila in studio",
   },
   {
-    title: "CERTIFICATE FOR A GIFT",
+    title: "GIFT CARD",
     description:
-      "Give the gift of permanent art. Our gift certificates start at \u20AC50 and never expire.",
-    cta: "Buy a certificate",
+      "Regala un tatuaggio senza scegliere al posto suo. Le gift card partono da \u20AC50 e non hanno scadenza.",
+    cta: "Acquista una gift card",
   },
 ];
 
@@ -85,7 +85,7 @@ export default function Promotions() {
             lineHeight: 0.9,
           }}
         >
-          PROMOTIONS
+          PROMO
         </h2>
 
         <div

@@ -22,13 +22,13 @@ export default function Header() {
   };
 
   const navItems = [
-    { label: "About", id: "about" },
-    { label: "Services", id: "services" },
-    { label: "Booking", id: "booking" },
-    { label: "Artists", id: "artists" },
-    { label: "Promotions", id: "promotions" },
+    { label: "Studio", id: "about" },
+    { label: "Servizi", id: "services" },
+    { label: "Prenota", id: "booking" },
+    { label: "Artisti", id: "artists" },
+    { label: "Promo", id: "promotions" },
     { label: "FAQ", id: "faq" },
-    { label: "Contact", id: "footer" },
+    { label: "Contatti", id: "footer" },
   ];
 
   return (
@@ -102,10 +102,9 @@ export default function Header() {
               className="font-['Bebas_Neue'] text-4xl md:text-6xl tracking-wide transition-colors duration-300 hover:text-[#DC2626] cursor-pointer"
               style={{
                 color: "var(--color-white)",
-                transitionDelay: menuOpen ? `${i * 50}ms` : "0ms",
                 opacity: menuOpen ? 1 : 0,
                 transform: menuOpen ? "translateY(0)" : "translateY(20px)",
-                transition: "opacity 0.4s ease, transform 0.4s ease, color 0.25s ease",
+                transition: `opacity 0.4s ease ${menuOpen ? i * 50 : 0}ms, transform 0.4s ease ${menuOpen ? i * 50 : 0}ms, color 0.25s ease`,
               }}
             >
               {item.label}

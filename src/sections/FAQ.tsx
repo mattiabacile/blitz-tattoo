@@ -7,24 +7,28 @@ gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
   {
-    q: "How do I book a tattoo session?",
-    a: "You can book directly through our website using the form above, call us at +39 06 1234 5678, or stop by the studio. Walk-ins are welcome every Wednesday.",
+    q: "Come prenoto una sessione?",
+    a: "Puoi compilare il form, chiamarci al +39 059 123 4567 o passare direttamente in studio a Modena. Il mercoledì accogliamo anche walk-in.",
   },
   {
-    q: "What should I consider before getting a tattoo?",
-    a: "Make sure you're certain about the design and placement. Avoid alcohol 24 hours before your session. Eat a good meal beforehand, and wear comfortable clothing that gives easy access to the area being tattooed.",
+    q: "Cosa devo fare prima di tatuarmi?",
+    a: "Arriva riposato, mangia qualcosa prima della seduta ed evita alcol nelle 24 ore precedenti. Indossa vestiti comodi che lascino libera la zona da tatuare.",
   },
   {
-    q: "How long does each tattoo session last?",
-    a: "Small tattoos can take 1-2 hours. Medium pieces typically take 3-4 hours. Full sessions for large work can run 5-7 hours. We'll give you a time estimate during your consultation.",
+    q: "Quanto dura una sessione?",
+    a: "Un tatuaggio piccolo può richiedere 1-2 ore, un pezzo medio circa 3-4. I lavori grandi possono arrivare a 5-7 ore. Ti diamo una stima precisa in consulenza.",
   },
   {
-    q: "Do you offer financing or payment plans?",
-    a: "We require a \u20AC50 deposit to secure your booking. The remaining balance is due on the day of your session. For larger pieces over \u20AC500, we can arrange a two-payment plan.",
+    q: "Serve un acconto?",
+    a: "Sì, chiediamo \u20AC50 per confermare la prenotazione. Il saldo si paga il giorno della sessione. Per progetti sopra i \u20AC500 possiamo dividere il pagamento in due tranche.",
   },
   {
-    q: "What styles and techniques are available at the studio?",
-    a: "We cover traditional American, neo-traditional, fine line, minimalist, blackwork, realism, portraits, Japanese, geometric, and custom illustrative work. Each artist has their specialty \u2014 check our Artists section.",
+    q: "Quali stili realizzate?",
+    a: "Lavoriamo su tradizionale, neo-traditional, fine line, minimal, blackwork, realismo, ritratti, giapponese, geometrico e illustrazione custom. In consulenza ti indirizziamo verso l'artista più adatto.",
+  },
+  {
+    q: "Fate anche piercing?",
+    a: "Sì. Eseguiamo piercing con materiale sterile e gioielli adatti alla prima guarigione. Ti seguiamo anche per controlli, cambio gioiello e cura dopo il piercing.",
   },
 ];
 
@@ -105,7 +109,7 @@ export default function FAQ() {
             lineHeight: 0.9,
           }}
         >
-          FREQUENTLY ASKED QUESTIONS
+          DOMANDE FREQUENTI
         </h2>
 
         <div ref={itemsRef} className="flex flex-col gap-4">

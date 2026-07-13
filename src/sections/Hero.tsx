@@ -2,37 +2,39 @@ import { useEffect, useRef } from "react";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   const typewriterRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Typewriter effect
     const target = typewriterRef.current;
     if (!target) return;
 
     const text = target.getAttribute("data-text") || "";
     const cursor = target.querySelector(".cursor") as HTMLElement;
     let i = 0;
+    let cancelled = false;
     const speed = 100;
 
     target.textContent = "";
     if (cursor) target.appendChild(cursor);
 
     const typeWriter = () => {
-      if (i < text.length) {
-        const char = document.createTextNode(text.charAt(i));
-        target.insertBefore(char, cursor);
-        i++;
-        setTimeout(typeWriter, speed + Math.random() * 50);
-      }
+      if (cancelled || i >= text.length) return;
+
+      const char = document.createTextNode(text.charAt(i));
+      target.insertBefore(char, cursor);
+      i++;
+      window.setTimeout(typeWriter, speed + Math.random() * 50);
     };
 
-    const timer = setTimeout(typeWriter, 1500);
-    return () => clearTimeout(timer);
+    const timer = window.setTimeout(typeWriter, 1500);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
-    // Video intersection observer
     const video = videoRef.current;
     const container = containerRef.current;
     if (!video || !container) return;
@@ -57,169 +59,69 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden"
-      style={{ height: "100vh", minHeight: "600px" }}
+      ref={containerRef}
+      className="hero-section relative w-full overflow-hidden"
     >
-      {/* Background image */}
-      <img
-        src="/hero-background.jpg"
-        alt="Blitz Tattoo Studio Interior"
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ zIndex: 1 }}
+      <video
+        ref={videoRef}
+        src="/hero-studio.mp4"
+        poster="/studio-postazione.jpg"
+        muted
+        loop
+        playsInline
+        autoPlay
+        preload="metadata"
+        aria-label="Interno dello studio Blitz Tattoo"
+        className="hero-video absolute inset-0 h-full w-full object-cover"
       />
 
-      {/* Dark gradient overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          zIndex: 2,
-          background:
-            "linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.6) 100%)",
-        }}
-      />
+      <div className="hero-overlay absolute inset-0" aria-hidden="true" />
 
-      {/* Video overlay */}
-      <div
-        ref={containerRef}
-        className="absolute hidden md:block"
-        style={{
-          top: "12vh",
-          right: "8vw",
-          width: "22vw",
-          maxWidth: "340px",
-          aspectRatio: "6/5",
-          zIndex: 10,
-          borderRadius: "4px",
-          border: "1px solid rgba(255,255,255,0.1)",
-          boxShadow: "0 0 60px rgba(220, 38, 38, 0.3)",
-          overflow: "hidden",
-        }}
-      >
-        <video
-          ref={videoRef}
-          src="/hero-tattoo-machine.mp4"
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-          style={{ mixBlendMode: "multiply", filter: "brightness(0.8)" }}
-        />
-      </div>
-
-      {/* Typewriter text */}
       <div
         ref={typewriterRef}
         className="hero-typewriter absolute"
-        data-text="WHERE INK MEETS ARTISTRY"
-        style={{
-          top: "18vh",
-          left: "4vw",
-          fontFamily: "'Bebas Neue', sans-serif",
-          fontSize: "clamp(0.875rem, 1.2vw, 1.25rem)",
-          letterSpacing: "0.2em",
-          color: "#FAFAFA",
-          textTransform: "uppercase",
-          zIndex: 20,
-        }}
+        data-text="MODENA, DAL 2015"
       >
-        <span
-          className="cursor inline-block"
-          style={{
-            width: "2px",
-            height: "1.1em",
-            backgroundColor: "#DC2626",
-            marginLeft: "2px",
-            verticalAlign: "text-bottom",
-            animation: "blink 0.8s step-end infinite",
-          }}
-        />
+        <span className="cursor inline-block" />
       </div>
 
-      {/* BLITZ heading */}
-      <h1
-        className="absolute font-['Bebas_Neue'] leading-[0.9] tracking-[-0.02em] uppercase"
-        style={{
-          left: "4vw",
-          top: "28vh",
-          fontSize: "var(--text-hero)",
-          color: "#DC2626",
-          textShadow: "0 0 80px rgba(220, 38, 38, 0.5)",
-          zIndex: 10,
-        }}
-      >
+      <h1 className="hero-word hero-word--primary absolute font-['Bebas_Neue'] uppercase">
         BLITZ
       </h1>
 
-      {/* Subtext */}
-      <p
-        className="absolute hidden md:block"
-        style={{
-          left: "4vw",
-          bottom: "18vh",
-          maxWidth: "320px",
-          fontSize: "var(--text-body-sm)",
-          color: "#FAFAFA",
-          lineHeight: 1.6,
-          zIndex: 10,
-          opacity: 0,
-          transform: "translateY(20px)",
-          animation: "fadeSlideUp 0.6s ease forwards 4.5s",
-        }}
-      >
-        Our experienced team specializes in custom designs, cover-ups, and piercings. Walk-ins welcome.
+      <p className="hero-copy absolute hidden md:block">
+        Tatuaggi custom, cover-up e piercing. Si parte da una conversazione,
+        si arriva a un segno costruito per durare.
       </p>
 
-      {/* CTA Button */}
+      <h2 className="hero-word hero-word--secondary absolute font-['Bebas_Neue'] uppercase">
+        TATTOO
+      </h2>
+
       <a
         href="#booking"
-        onClick={(e) => {
-          e.preventDefault();
+        onClick={(event) => {
+          event.preventDefault();
           document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
         }}
-        className="absolute inline-block font-medium transition-all duration-300 hover:bg-white hover:text-black"
-        style={{
-          left: "4vw",
-          bottom: "10vh",
-          zIndex: 10,
-          background: "transparent",
-          border: "1px solid rgba(255,255,255,0.4)",
-          color: "#FAFAFA",
-          padding: "10px 24px",
-          borderRadius: "100px",
-          fontSize: "var(--text-nav)",
-          fontFamily: "'Inter', sans-serif",
-        }}
+        className="hero-watermark-cta absolute flex items-center justify-between transition-colors duration-300"
+        aria-label="Prenota una consulenza"
       >
-        Book your tattoo
+        <span>
+          <small>Consulenza in studio</small>
+          <strong>Prenota ora</strong>
+        </span>
+        <span className="hero-watermark-cta__arrow" aria-hidden="true">
+          &#8599;
+        </span>
       </a>
 
-      {/* TATTOO heading */}
-      <h1
-        className="absolute font-['Bebas_Neue'] leading-[0.9] tracking-[-0.02em] uppercase"
-        style={{
-          right: "6vw",
-          bottom: "15vh",
-          fontSize: "var(--text-hero)",
-          color: "#DC2626",
-          textShadow: "0 0 80px rgba(220, 38, 38, 0.5)",
-          zIndex: 10,
-        }}
-      >
-        TATTOO
-      </h1>
-
-      {/* Scroll indicator */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
         style={{ bottom: "3vh", zIndex: 10, animation: "bounce 2s infinite" }}
+        aria-hidden="true"
       >
-        <svg
-          width="16"
-          height="24"
-          viewBox="0 0 16 24"
-          fill="none"
-          style={{ opacity: 0.5 }}
-        >
+        <svg width="16" height="24" viewBox="0 0 16 24" fill="none" style={{ opacity: 0.5 }}>
           <path
             d="M8 4V20M8 20L2 14M8 20L14 14"
             stroke="#FAFAFA"

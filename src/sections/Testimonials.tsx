@@ -8,21 +8,21 @@ gsap.registerPlugin(ScrollTrigger);
 const testimonials = [
   {
     quote:
-      "Blitz Tattoo turned my vague idea into something I couldn't have imagined. The artist listened, sketched, and delivered beyond expectations.",
+      "Sono arrivato con un'idea vaga e ne è uscito un tatuaggio molto più forte di quanto immaginassi. Ascolto, bozza e risultato impeccabili.",
     author: "Marco",
-    tattoo: "Custom Sleeve",
+    tattoo: "Manica custom",
   },
   {
     quote:
-      "Clean, professional, and the atmosphere is incredible. I felt comfortable from the moment I walked in. My third tattoo here and counting.",
+      "Studio pulito, professionale, atmosfera giusta. Mi sono sentita a mio agio dal primo minuto. Terzo tatuaggio qui, e non sarà l'ultimo.",
     author: "Giulia",
-    tattoo: "Minimalist Design",
+    tattoo: "Fine line",
   },
   {
     quote:
-      "The attention to detail is unmatched. They matched the photo of my dog perfectly \u2014 it's like he's always with me now.",
+      "La cura dei dettagli è altissima. Il ritratto del mio cane è fedele alla foto e ha esattamente l'emozione che volevo.",
     author: "Alessandro",
-    tattoo: "Portrait Work",
+    tattoo: "Ritratto",
   },
 ];
 
@@ -96,8 +96,8 @@ export default function Testimonials() {
             letterSpacing: "-0.02em",
           }}
         >
-          <span>WHAT OUR CLIENTS SAY </span>
-          <span style={{ color: "#DC2626" }}>ABOUT US</span>
+          <span>COSA DICONO </span>
+          <span style={{ color: "#DC2626" }}>DI NOI</span>
         </h2>
 
         <div
@@ -156,7 +156,7 @@ export default function Testimonials() {
               fontFamily: "'Inter', sans-serif",
             }}
           >
-            Book your tattoo
+            Prenota il tuo tatuaggio
           </a>
         </div>
       </div>

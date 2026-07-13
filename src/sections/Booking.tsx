@@ -83,7 +83,7 @@ export default function Booking() {
             letterSpacing: "-0.02em",
           }}
         >
-          WE&apos;RE EXCITED TO <span style={{ color: "#DC2626" }}>LEARN MORE</span> ABOUT YOUR TATTOO.
+          RACCONTACI LA TUA IDEA: <span style={{ color: "#DC2626" }}>LA TRASFORMIAMO</span> IN UN TATUAGGIO.
         </h2>
 
         <div
@@ -114,7 +114,7 @@ export default function Booking() {
                   marginTop: "var(--space-sm)",
                 }}
               >
-                We received your request. Our team will get back to you within 24 hours.
+                Abbiamo ricevuto la richiesta. Ti rispondiamo entro 24 ore per definire idea, tempi e prossimo passo.
               </p>
             </div>
           ) : (
@@ -122,10 +122,10 @@ export default function Booking() {
               {/* Row 1: First & Last Name */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label style={labelStyle}>First Name</label>
+                  <label style={labelStyle}>Nome</label>
                   <input
                     type="text"
-                    placeholder="Your first name"
+                    placeholder="Il tuo nome"
                     required
                     style={inputStyle}
                     onFocus={(e) => {
@@ -139,10 +139,10 @@ export default function Booking() {
                   />
                 </div>
                 <div>
-                  <label style={labelStyle}>Last Name</label>
+                  <label style={labelStyle}>Cognome</label>
                   <input
                     type="text"
-                    placeholder="Your last name"
+                    placeholder="Il tuo cognome"
                     required
                     style={inputStyle}
                     onFocus={(e) => {
@@ -160,7 +160,7 @@ export default function Booking() {
               {/* Row 2: Phone & Email */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label style={labelStyle}>Phone Number</label>
+                  <label style={labelStyle}>Telefono</label>
                   <input
                     type="tel"
                     placeholder="+39 3XX XXX XXXX"
@@ -176,10 +176,10 @@ export default function Booking() {
                   />
                 </div>
                 <div>
-                  <label style={labelStyle}>Email Address</label>
+                  <label style={labelStyle}>Email</label>
                   <input
                     type="email"
-                    placeholder="your@email.com"
+                    placeholder="nome@esempio.it"
                     required
                     style={inputStyle}
                     onFocus={(e) => {
@@ -196,10 +196,10 @@ export default function Booking() {
 
               {/* Row 3: Description */}
               <div>
-                <label style={labelStyle}>What would you like?</label>
+                <label style={labelStyle}>Che tatuaggio hai in mente?</label>
                 <textarea
                   rows={4}
-                  placeholder="Describe your tattoo idea, style, placement, and size..."
+                  placeholder="Descrivi idea, stile, punto del corpo e dimensione indicativa..."
                   required
                   style={{
                     ...inputStyle,
@@ -219,7 +219,7 @@ export default function Booking() {
 
               {/* Row 4: Date */}
               <div>
-                <label style={labelStyle}>Preferred Date</label>
+                <label style={labelStyle}>Data preferita</label>
                 <input
                   type="date"
                   style={inputStyle}
@@ -248,7 +248,7 @@ export default function Booking() {
                   border: "none",
                 }}
               >
-                Book your tattoo
+                Invia la richiesta
               </button>
             </form>
           )}

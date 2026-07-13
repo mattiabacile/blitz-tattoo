@@ -14,6 +14,7 @@ import Artists from "./sections/Artists";
 import Promotions from "./sections/Promotions";
 import FAQ from "./sections/FAQ";
 import Footer from "./sections/Footer";
+import DemoNotice from "./sections/DemoNotice";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,6 +75,7 @@ export default function App() {
         <FAQ />
       </main>
       <Footer />
+      <DemoNotice />
     </div>
   );
 }

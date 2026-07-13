@@ -6,22 +6,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 const sessions = [
   {
-    title: "FULL SESSION",
+    title: "SESSIONE INTERA",
     image: "/session-full.jpg",
-    description: "For large-scale pieces, full back, chest, or sleeve work.",
-    price: "FROM \u20AC300",
+    description: "Per progetti grandi: schiena, petto, maniche o lavori in più passaggi.",
+    price: "DA \u20AC300",
   },
   {
-    title: "MEDIUM TATTOOS",
+    title: "TATUAGGI MEDI",
     image: "/session-medium.jpg",
-    description: "Perfect for forearm pieces, calf work, or detailed medium designs.",
-    price: "FROM \u20AC150",
+    description: "Ideale per avambraccio, polpaccio o soggetti dettagliati di media dimensione.",
+    price: "DA \u20AC150",
   },
   {
-    title: "SMALL TATTOOS",
+    title: "TATUAGGI PICCOLI",
     image: "/session-small.jpg",
-    description: "Minimal designs, symbols, lettering, and small custom pieces.",
-    price: "FROM \u20AC60",
+    description: "Simboli, lettering, mini custom e disegni essenziali ma curati.",
+    price: "DA \u20AC60",
   },
 ];
 
@@ -66,7 +66,7 @@ export default function Sessions() {
             lineHeight: 0.9,
           }}
         >
-          CHOOSE YOUR SESSION
+          SCEGLI LA SESSIONE
         </h2>
 
         <div
@@ -137,7 +137,7 @@ export default function Sessions() {
                   fontFamily: "'Inter', sans-serif",
                 }}
               >
-                Book now
+                Prenota ora
               </a>
             </div>
           ))}

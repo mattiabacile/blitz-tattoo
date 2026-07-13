@@ -9,20 +9,20 @@ const artists = [
   {
     name: "JAKE BENNETT",
     image: "/artist-jake.jpg",
-    specialty: "Traditional & Neo-Traditional",
-    bio: "15 years of bold lines, saturated color, and classic American tattoo traditions.",
+    specialty: "Tradizionale & neo-traditional",
+    bio: "Linee decise, colore pieno e quindici anni di tradizione americana reinterpretata con precisione.",
   },
   {
     name: "SOPHIA REED",
     image: "/artist-sophia.jpg",
-    specialty: "Fine Line & Minimalist",
-    bio: "Delicate, precise work that speaks volumes through subtle detail and negative space.",
+    specialty: "Fine line & minimal",
+    bio: "Tratti sottili, dettagli puliti e composizioni leggere che parlano senza bisogno di alzare la voce.",
   },
   {
     name: "EMILY CARTER",
     image: "/artist-emily.jpg",
-    specialty: "Realism & Portraits",
-    bio: "Photographic precision in black-and-gray. If you can imagine it, she can ink it.",
+    specialty: "Realismo & ritratti",
+    bio: "Precisione fotografica in black and grey. Se l'immagine conta, ogni sfumatura viene trattata con rispetto.",
   },
 ];
 
@@ -74,7 +74,7 @@ export default function Artists() {
             letterSpacing: "-0.02em",
           }}
         >
-          THOSE WHO WILL CREATE FUTURE <span style={{ color: "#DC2626" }}>MASTERPIECES</span> FOR YOU
+          LE MANI DIETRO I TUOI PROSSIMI <span style={{ color: "#DC2626" }}>SEGNI</span>
         </h2>
 
         <div

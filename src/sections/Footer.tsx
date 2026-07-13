@@ -59,7 +59,7 @@ export default function Footer() {
               lineHeight: 1.5,
             }}
           >
-            Rome&apos;s destination for custom ink since 2015.
+            Tatuaggi custom e piercing a Modena, dal 2015.
           </p>
         </div>
 
@@ -74,7 +74,7 @@ export default function Footer() {
               marginBottom: "var(--space-sm)",
             }}
           >
-            ADDRESS
+            INDIRIZZO
           </span>
           <p
             style={{
@@ -83,9 +83,9 @@ export default function Footer() {
               lineHeight: 1.7,
             }}
           >
-            Via del Corso 127
+            Via Emilia Centro 127
             <br />
-            00186 Roma RM
+            41121 Modena MO
             <br />
             Italia
           </p>
@@ -102,7 +102,7 @@ export default function Footer() {
               marginBottom: "var(--space-sm)",
             }}
           >
-            OPENING HOURS
+            ORARI
           </span>
           <p
             style={{
@@ -111,11 +111,11 @@ export default function Footer() {
               lineHeight: 1.7,
             }}
           >
-            Mon&ndash;Sat: 10:00 &ndash; 20:00
+            Lun&ndash;Sab: 10:00 &ndash; 20:00
             <br />
-            Sun: 12:00 &ndash; 18:00
+            Dom: 12:00 &ndash; 18:00
             <br />
-            Walk-in Wed: 10:00 &ndash; 22:00
+            Walk-in mer: 10:00 &ndash; 22:00
           </p>
         </div>
 
@@ -130,7 +130,7 @@ export default function Footer() {
               marginBottom: "var(--space-sm)",
             }}
           >
-            FOLLOW US
+            SEGUICI
           </span>
           <div className="flex flex-col gap-2">
             {["Instagram", "Facebook", "TikTok"].map((social) => (
@@ -167,10 +167,10 @@ export default function Footer() {
             fontFamily: "'Inter', sans-serif",
           }}
         >
-          &copy; 2025 Blitz Tattoo. All rights reserved.
+          &copy; 2026 Blitz Tattoo. Tutti i diritti riservati.
         </p>
         <div className="flex gap-4">
-          {["Privacy Policy", "Terms of Service"].map((text, i) => (
+          {["Privacy", "Termini"].map((text, i) => (
             <span
               key={text}
               className="transition-colors duration-300 hover:text-white cursor-pointer"

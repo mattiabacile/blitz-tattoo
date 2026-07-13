@@ -2,18 +2,38 @@ import { useEffect, useRef } from "react";
 import { ScrollBlurFade } from "../utils/ScrollBlurFade";
 
 const services = [
-  "Signature Ink",
-  "Ink Concept",
-  "Dynamic Designs",
-  "Cinematic Tattoos",
-  "3D Ink Mastery",
-  "Soundwave Tattoos",
-  "Digital Ink",
-  "Photo-Realistic Art",
-  "Iconic Creations",
-  "Packaged Ink",
-  "Ad-Inspired Tattoos",
-  "Brand Art Tattoos",
+  {
+    title: "Tatuaggi custom",
+    description: "Un progetto originale costruito da zero su anatomia, idea e stile personale.",
+  },
+  {
+    title: "Cover-up e rework",
+    description: "Copriamo o ripensiamo vecchi tatuaggi, partendo da ciò che la pelle permette davvero.",
+  },
+  {
+    title: "Tradizionale e neo-traditional",
+    description: "Linee decise, composizioni leggibili e colore pieno, con radici classiche e voce contemporanea.",
+  },
+  {
+    title: "Fine line e minimal",
+    description: "Segni sottili e proporzioni precise, progettati per restare puliti anche nel tempo.",
+  },
+  {
+    title: "Blackwork e ornamentale",
+    description: "Nero pieno, geometrie e decorazioni che seguono il movimento naturale del corpo.",
+  },
+  {
+    title: "Realismo e ritratti",
+    description: "Volti, animali e immagini tradotte in pelle con attenzione a luce, volume ed espressione.",
+  },
+  {
+    title: "Piercing",
+    description: "Foratura sterile, posizionamento ragionato e gioielli adatti alla prima guarigione.",
+  },
+  {
+    title: "Cambio gioiello e controllo",
+    description: "Assistenza post-piercing, verifica della guarigione e scelta del gioiello definitivo.",
+  },
 ];
 
 export default function Services() {
@@ -28,7 +48,6 @@ export default function Services() {
     const blurFade = new ScrollBlurFade(list);
     blurFadeRef.current = blurFade;
 
-    // Use IntersectionObserver to only run the effect when visible
     const section = sectionRef.current;
     if (section) {
       const observer = new IntersectionObserver(
@@ -50,68 +69,54 @@ export default function Services() {
   }, []);
 
   return (
-    <section
-      id="services"
-      ref={sectionRef}
-      style={{
-        backgroundColor: "var(--color-black)",
-        padding: "var(--space-2xl) 0",
-        position: "relative",
-        minHeight: "150vh",
-      }}
-    >
-      {/* Section label */}
-      <span
-        className="absolute font-medium uppercase"
-        style={{
-          top: "var(--space-lg)",
-          right: "var(--space-lg)",
-          fontSize: "var(--text-label)",
-          color: "var(--color-text-muted-dark)",
-          letterSpacing: "0.12em",
-        }}
-      >
-        SERVICES
-      </span>
+    <section id="services" ref={sectionRef} className="services-section relative">
+      <div className="services-inner mx-auto">
+        <header className="services-header grid grid-cols-1 md:grid-cols-5">
+          <h2 className="font-['Bebas_Neue'] uppercase md:col-span-3">
+            TATUAGGI E PIERCING,
+            <br />
+            <span>FATTI COME SI DEVE.</span>
+          </h2>
+          <p className="md:col-span-2">
+            Dal primo schizzo alla guarigione, ogni passaggio viene spiegato e
+            seguito. Scegliamo tecnica, artista e tempi in base al progetto,
+            non in base alla fretta.
+          </p>
+        </header>
 
-      <div className="flex flex-col items-center" style={{ padding: "0 var(--space-lg)" }}>
-        <h2
-          className="font-['Bebas_Neue'] uppercase text-center"
-          style={{
-            fontSize: "var(--text-h2)",
-            color: "var(--color-white)",
-            marginBottom: "var(--space-xl)",
-            letterSpacing: "-0.02em",
-            lineHeight: 0.9,
-          }}
-        >
-          WHAT WE DO
-        </h2>
+        <div className="services-content grid grid-cols-1 md:grid-cols-5">
+          <figure className="services-image md:col-span-2">
+            <img
+              src="/studio-postazione.jpg"
+              alt="Una postazione di lavoro all'interno di Blitz Tattoo"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Una postazione, preparata per il prossimo progetto.</figcaption>
+          </figure>
 
-        <ul ref={listRef} className="services-list">
-          {services.map((service, i) => (
-            <li key={i}>{service}</li>
-          ))}
-        </ul>
+          <div className="md:col-span-3">
+            <ul ref={listRef} className="services-list">
+              {services.map((service) => (
+                <li key={service.title}>
+                  <h3 className="service-title">{service.title}</h3>
+                  <p className="service-description">{service.description}</p>
+                </li>
+              ))}
+            </ul>
 
-        <a
-          href="#booking"
-          onClick={(e) => {
-            e.preventDefault();
-            document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
-          }}
-          className="inline-block mt-16 font-medium transition-all duration-300 hover:bg-[#DC2626] hover:text-white hover:border-[#DC2626]"
-          style={{
-            border: "1px solid #DC2626",
-            color: "#DC2626",
-            padding: "10px 24px",
-            borderRadius: "100px",
-            fontSize: "var(--text-nav)",
-            fontFamily: "'Inter', sans-serif",
-          }}
-        >
-          See all services
-        </a>
+            <a
+              href="#booking"
+              onClick={(event) => {
+                event.preventDefault();
+                document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="services-cta inline-flex items-center gap-4 transition-colors duration-300"
+            >
+              Parliamone in studio <span aria-hidden="true">&#8599;</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

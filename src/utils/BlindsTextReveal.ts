@@ -19,9 +19,11 @@ export class BlindsTextReveal extends TextSplitter {
       wordInners.forEach((inner) => {
         const topBlind = document.createElement("span");
         topBlind.className = "word__blind word__blind--top";
+        topBlind.setAttribute("aria-hidden", "true");
 
         const bottomBlind = document.createElement("span");
         bottomBlind.className = "word__blind word__blind--bottom";
+        bottomBlind.setAttribute("aria-hidden", "true");
 
         topBlind.style.background = this.bgColor;
         bottomBlind.style.background = this.bgColor;
