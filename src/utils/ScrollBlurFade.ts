@@ -3,14 +3,19 @@ export class ScrollBlurFade {
   items: NodeListOf<HTMLElement>;
   numItems: number;
   winH: number;
+  private activeIndex = 0;
+  private readonly reduceMotion: boolean;
+  private readonly onActiveChange?: (index: number) => void;
   private scrollInterval: ReturnType<typeof setInterval> | null = null;
   private readonly handleResize: () => void;
 
-  constructor(listElement: HTMLElement) {
+  constructor(listElement: HTMLElement, onActiveChange?: (index: number) => void) {
     this.list = listElement;
     this.items = this.list.querySelectorAll("li");
     this.numItems = this.items.length;
     this.winH = window.innerHeight;
+    this.reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    this.onActiveChange = onActiveChange;
     this.handleResize = () => {
       this.winH = window.innerHeight;
     };
@@ -47,17 +52,32 @@ export class ScrollBlurFade {
   private _scrollCallback() {
     const center = this._getCenter();
     const maxDistance = this.winH / 1.5;
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
 
-    this.items.forEach((item) => {
+    this.items.forEach((item, index) => {
       const rect = item.getBoundingClientRect();
       const elCenter = rect.top + rect.height / 2;
       const distance = Math.abs(center - elCenter);
       const normalized = Math.min(distance / maxDistance, 1);
 
-      item.style.filter = `blur(${normalized * 8}px)`;
-      item.style.opacity = String(1 - normalized);
-      item.style.color = normalized < 0.1 ? "#DC2626" : "#FAFAFA";
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+
+      item.style.filter = this.reduceMotion ? "none" : `blur(${normalized * 8}px)`;
+      item.style.opacity = this.reduceMotion ? "1" : String(1 - normalized);
     });
+
+    this.items.forEach((item, index) => {
+      item.style.color = index === closestIndex ? "#DC2626" : "#FAFAFA";
+    });
+
+    if (closestIndex !== this.activeIndex) {
+      this.activeIndex = closestIndex;
+      this.onActiveChange?.(closestIndex);
+    }
   }
 
   init() {
